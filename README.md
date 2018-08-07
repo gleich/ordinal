@@ -18,7 +18,7 @@ following in `Cargo.toml`:
 
 ```toml
 [dependencies]
-ordinal = "0.1"
+ordinal = "0.2"
 ```
 
 ## Using Ordinal

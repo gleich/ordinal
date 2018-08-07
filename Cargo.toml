@@ -1,6 +1,6 @@
 [package]
 name = "ordinal"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["David Tolnay <dtolnay@gmail.com>"]
 license = "MIT/Apache-2.0"
 description = "Formatting of ordinals (1st, 2nd, 3rd etc)"
