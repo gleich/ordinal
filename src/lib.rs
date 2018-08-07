@@ -13,7 +13,10 @@ extern crate num;
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd)]
 pub struct Ordinal<T: num::Integer + fmt::Display>(T);
 
-impl<T> fmt::Display for Ordinal<T> where T: num::Integer + fmt::Display {
+impl<T> fmt::Display for Ordinal<T>
+where
+    T: num::Integer + fmt::Display,
+{
     fn fmt(&self, f: &mut fmt::Formatter) -> Result<(), fmt::Error> {
         let s = format!("{}", self.0);
         let suffix = if s.ends_with("1") && !s.ends_with("11") {
@@ -29,17 +32,26 @@ impl<T> fmt::Display for Ordinal<T> where T: num::Integer + fmt::Display {
     }
 }
 
-impl<T> From<T> for Ordinal<T> where T: num::Integer + fmt::Display {
+impl<T> From<T> for Ordinal<T>
+where
+    T: num::Integer + fmt::Display,
+{
     fn from(t: T) -> Self {
         Ordinal(t)
     }
 }
 
-pub trait ToOrdinal<T> where T: num::Integer + fmt::Display {
+pub trait ToOrdinal<T>
+where
+    T: num::Integer + fmt::Display,
+{
     fn ordinal(self) -> Ordinal<T>;
 }
 
-impl<T> ToOrdinal<T> for T where T: num::Integer + fmt::Display {
+impl<T> ToOrdinal<T> for T
+where
+    T: num::Integer + fmt::Display,
+{
     fn ordinal(self) -> Ordinal<T> {
         Ordinal(self)
     }
