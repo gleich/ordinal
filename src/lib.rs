@@ -6,6 +6,8 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
+#![doc(html_root_url = "https://docs.rs/ordinal/0.2.0")]
+
 extern crate num_integer;
 
 use std::fmt::{self, Display};
