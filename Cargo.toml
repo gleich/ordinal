@@ -9,3 +9,6 @@ documentation = "https://github.com/dtolnay/ordinal"
 
 [dependencies]
 num = "0.1"
+
+[badges]
+travis-ci = { repository = "dtolnay/ordinal" }
