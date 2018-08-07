@@ -6,6 +6,7 @@ license = "MIT/Apache-2.0"
 description = "Formatting of ordinals (1st, 2nd, 3rd etc)"
 repository = "https://github.com/dtolnay/ordinal"
 documentation = "https://github.com/dtolnay/ordinal"
+readme = "README.md"
 
 [dependencies]
 num-integer = "0.1"
