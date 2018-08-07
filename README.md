@@ -7,7 +7,7 @@ Ordinals (1st, 2nd, 3rd etc) for Rust
 This crate provides a type `Ordinal<T>` that formats an [`Integer`] type `T` as
 an [ordinal number] (1st, 2nd, 3rd etc).
 
-[Integer]: https://docs.rs/num-integer/0.1/num_integer/trait.Integer.html
+[`Integer`]: https://docs.rs/num-integer/0.1/num_integer/trait.Integer.html
 [ordinal number]: https://en.wikipedia.org/wiki/Ordinal_number_%28linguistics%29
 
 
