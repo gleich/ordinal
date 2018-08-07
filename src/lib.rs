@@ -12,7 +12,7 @@ use std::fmt::{self, Display};
 
 use num_integer::Integer;
 
-#[derive(Debug, Eq, PartialEq, Ord, PartialOrd)]
+#[derive(Copy, Clone, Debug, Default, Eq, PartialEq, Ord, PartialOrd, Hash)]
 pub struct Ordinal<T>(pub T);
 
 impl<T> Display for Ordinal<T>
