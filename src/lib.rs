@@ -23,7 +23,7 @@
 //! }
 //! ```
 
-#![doc(html_root_url = "https://docs.rs/ordinal/0.2.1")]
+#![doc(html_root_url = "https://docs.rs/ordinal/0.2.2")]
 
 extern crate num_integer;
 
