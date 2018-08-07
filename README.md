@@ -4,11 +4,12 @@ Ordinals (1st, 2nd, 3rd etc) for Rust
 [![Build Status](https://api.travis-ci.org/dtolnay/ordinal.svg?branch=master)](https://travis-ci.org/dtolnay/ordinal)
 [![Latest Version](https://img.shields.io/crates/v/ordinal.svg)](https://crates.io/crates/ordinal)
 
-This crate provides a type `Ordinal<T>` that formats an
-[Integer](http://rust-num.github.io/num/num/integer/trait.Integer.html)
-type `T` as an
-[ordinal number](https://en.wikipedia.org/wiki/Ordinal_number_%28linguistics%29)
-(1st, 2nd, 3rd etc).
+This crate provides a type `Ordinal<T>` that formats an [`Integer`] type `T` as
+an [ordinal number] (1st, 2nd, 3rd etc).
+
+[Integer]: https://docs.rs/num-integer/0.1/num_integer/trait.Integer.html
+[ordinal number]: https://en.wikipedia.org/wiki/Ordinal_number_%28linguistics%29
+
 
 ## Installation
 
@@ -27,7 +28,7 @@ extern crate ordinal;
 use ordinal::Ordinal;
 
 fn main() {
-    assert_eq!("2nd", format!("{}", Ordinal::from(2)));
+    assert_eq!("2nd", Ordinal(2).to_string());
 }
 ```
 
@@ -43,5 +44,5 @@ at your option.
 ### Contribution
 
 Unless you explicitly state otherwise, any contribution intentionally submitted
-for inclusion in Ordinal by you, as defined in the Apache-2.0 license, shall be
-dual licensed as above, without any additional terms or conditions.
+for inclusion in this crate by you, as defined in the Apache-2.0 license, shall
+be dual licensed as above, without any additional terms or conditions.
