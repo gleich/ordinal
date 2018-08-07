@@ -6,16 +6,18 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
+extern crate num_integer;
+
 use std::fmt;
 
-extern crate num;
+use num_integer::Integer;
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd)]
-pub struct Ordinal<T: num::Integer + fmt::Display>(T);
+pub struct Ordinal<T: Integer + fmt::Display>(T);
 
 impl<T> fmt::Display for Ordinal<T>
 where
-    T: num::Integer + fmt::Display,
+    T: Integer + fmt::Display,
 {
     fn fmt(&self, f: &mut fmt::Formatter) -> Result<(), fmt::Error> {
         let s = format!("{}", self.0);
@@ -34,7 +36,7 @@ where
 
 impl<T> From<T> for Ordinal<T>
 where
-    T: num::Integer + fmt::Display,
+    T: Integer + fmt::Display,
 {
     fn from(t: T) -> Self {
         Ordinal(t)
@@ -43,14 +45,14 @@ where
 
 pub trait ToOrdinal<T>
 where
-    T: num::Integer + fmt::Display,
+    T: Integer + fmt::Display,
 {
     fn ordinal(self) -> Ordinal<T>;
 }
 
 impl<T> ToOrdinal<T> for T
 where
-    T: num::Integer + fmt::Display,
+    T: Integer + fmt::Display,
 {
     fn ordinal(self) -> Ordinal<T> {
         Ordinal(self)
@@ -59,6 +61,11 @@ where
 
 #[cfg(test)]
 mod tests {
+    extern crate num_bigint;
+    extern crate num_traits;
+
+    use self::num_bigint::{BigInt, BigUint};
+    use self::num_traits::One;
     use super::*;
 
     #[test]
@@ -117,7 +124,6 @@ mod tests {
         assert_eq!("1st", format!("{}", 1u64.ordinal()));
         assert_eq!("1st", format!("{}", 1usize.ordinal()));
 
-        use num::{BigInt, BigUint, One};
         assert_eq!("1st", format!("{}", BigInt::one().ordinal()));
         assert_eq!("1st", format!("{}", BigUint::one().ordinal()));
     }

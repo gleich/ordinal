@@ -8,7 +8,11 @@ repository = "https://github.com/dtolnay/ordinal"
 documentation = "https://github.com/dtolnay/ordinal"
 
 [dependencies]
-num = "0.1"
+num-integer = "0.1"
+
+[dev-dependencies]
+num-bigint = "0.2"
+num-traits = "0.2"
 
 [badges]
 travis-ci = { repository = "dtolnay/ordinal" }
