@@ -10,7 +10,6 @@ an [ordinal number] (1st, 2nd, 3rd etc).
 [`Integer`]: https://docs.rs/num-integer/0.1/num_integer/trait.Integer.html
 [ordinal number]: https://en.wikipedia.org/wiki/Ordinal_number_%28linguistics%29
 
-
 ## Installation
 
 Ordinal is available on [crates.io](https://crates.io/crates/ordinal). Use the

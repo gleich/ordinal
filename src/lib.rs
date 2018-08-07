@@ -6,6 +6,23 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
+//! This crate provides a type `Ordinal<T>` that formats an [`Integer`] type `T` as
+//! an [ordinal number] (1st, 2nd, 3rd etc).
+//!
+//! [`Integer`]: https://docs.rs/num-integer/0.1/num_integer/trait.Integer.html
+//! [ordinal number]: https://en.wikipedia.org/wiki/Ordinal_number_%28linguistics%29
+//!
+//! # Example
+//!
+//! ```rust
+//! extern crate ordinal;
+//! use ordinal::Ordinal;
+//!
+//! fn main() {
+//!     assert_eq!("2nd", Ordinal(2).to_string());
+//! }
+//! ```
+
 #![doc(html_root_url = "https://docs.rs/ordinal/0.2.0")]
 
 extern crate num_integer;
@@ -14,6 +31,7 @@ use std::fmt::{self, Display};
 
 use num_integer::Integer;
 
+/// Newtype wrapper struct that formats integers as an ordinal number.
 #[derive(Copy, Clone, Debug, Default, Eq, PartialEq, Ord, PartialOrd, Hash)]
 pub struct Ordinal<T>(pub T);
 
