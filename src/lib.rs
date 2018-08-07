@@ -8,19 +8,19 @@
 
 extern crate num_integer;
 
-use std::fmt;
+use std::fmt::{self, Display};
 
 use num_integer::Integer;
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd)]
-pub struct Ordinal<T: Integer + fmt::Display>(T);
+pub struct Ordinal<T>(pub T);
 
-impl<T> fmt::Display for Ordinal<T>
+impl<T> Display for Ordinal<T>
 where
-    T: Integer + fmt::Display,
+    T: Integer + Display,
 {
-    fn fmt(&self, f: &mut fmt::Formatter) -> Result<(), fmt::Error> {
-        let s = format!("{}", self.0);
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        let s = self.0.to_string();
         let suffix = if s.ends_with("1") && !s.ends_with("11") {
             "st"
         } else if s.ends_with("2") && !s.ends_with("12") {
@@ -31,31 +31,6 @@ where
             "th"
         };
         write!(f, "{}{}", s, suffix)
-    }
-}
-
-impl<T> From<T> for Ordinal<T>
-where
-    T: Integer + fmt::Display,
-{
-    fn from(t: T) -> Self {
-        Ordinal(t)
-    }
-}
-
-pub trait ToOrdinal<T>
-where
-    T: Integer + fmt::Display,
-{
-    fn ordinal(self) -> Ordinal<T>;
-}
-
-impl<T> ToOrdinal<T> for T
-where
-    T: Integer + fmt::Display,
-{
-    fn ordinal(self) -> Ordinal<T> {
-        Ordinal(self)
     }
 }
 
@@ -106,25 +81,25 @@ mod tests {
             (123, "123rd"),
             (124, "124th"),
         ] {
-            assert_eq!(case.1, format!("{}", Ordinal::from(case.0)));
+            assert_eq!(case.1, Ordinal(case.0).to_string());
         }
     }
 
     #[test]
     fn test_types() {
-        assert_eq!("1st", format!("{}", 1i8.ordinal()));
-        assert_eq!("1st", format!("{}", 1i16.ordinal()));
-        assert_eq!("1st", format!("{}", 1i32.ordinal()));
-        assert_eq!("1st", format!("{}", 1i64.ordinal()));
-        assert_eq!("1st", format!("{}", 1isize.ordinal()));
+        assert_eq!("1st", Ordinal(1i8).to_string());
+        assert_eq!("1st", Ordinal(1i16).to_string());
+        assert_eq!("1st", Ordinal(1i32).to_string());
+        assert_eq!("1st", Ordinal(1i64).to_string());
+        assert_eq!("1st", Ordinal(1isize).to_string());
 
-        assert_eq!("1st", format!("{}", 1u8.ordinal()));
-        assert_eq!("1st", format!("{}", 1u16.ordinal()));
-        assert_eq!("1st", format!("{}", 1u32.ordinal()));
-        assert_eq!("1st", format!("{}", 1u64.ordinal()));
-        assert_eq!("1st", format!("{}", 1usize.ordinal()));
+        assert_eq!("1st", Ordinal(1u8).to_string());
+        assert_eq!("1st", Ordinal(1u16).to_string());
+        assert_eq!("1st", Ordinal(1u32).to_string());
+        assert_eq!("1st", Ordinal(1u64).to_string());
+        assert_eq!("1st", Ordinal(1usize).to_string());
 
-        assert_eq!("1st", format!("{}", BigInt::one().ordinal()));
-        assert_eq!("1st", format!("{}", BigUint::one().ordinal()));
+        assert_eq!("1st", Ordinal(BigInt::one()).to_string());
+        assert_eq!("1st", Ordinal(BigUint::one()).to_string());
     }
 }
