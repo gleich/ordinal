@@ -23,7 +23,6 @@ ordinal = "0.2"
 ## Using Ordinal
 
 ```rust
-extern crate ordinal;
 use ordinal::Ordinal;
 
 fn main() {

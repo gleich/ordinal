@@ -14,8 +14,7 @@
 //!
 //! # Example
 //!
-//! ```rust
-//! extern crate ordinal;
+//! ```
 //! use ordinal::Ordinal;
 //!
 //! fn main() {
@@ -24,8 +23,6 @@
 //! ```
 
 #![doc(html_root_url = "https://docs.rs/ordinal/0.2.2")]
-
-extern crate num_integer;
 
 use std::fmt::{self, Display};
 
@@ -56,12 +53,9 @@ where
 
 #[cfg(test)]
 mod tests {
-    extern crate num_bigint;
-    extern crate num_traits;
-
-    use self::num_bigint::{BigInt, BigUint};
-    use self::num_traits::One;
     use super::*;
+    use num_bigint::{BigInt, BigUint};
+    use num_traits::One;
 
     #[test]
     fn test_display() {
