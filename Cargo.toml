@@ -18,3 +18,6 @@ num-traits = "0.2"
 
 [badges]
 travis-ci = { repository = "dtolnay/ordinal" }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
