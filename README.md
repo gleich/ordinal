@@ -1,7 +1,7 @@
 Ordinals (1st, 2nd, 3rd etc) for Rust
 =====================================
 
-[![Build Status](https://api.travis-ci.org/dtolnay/ordinal.svg?branch=master)](https://travis-ci.org/dtolnay/ordinal)
+[![Build Status](https://img.shields.io/github/workflow/status/dtolnay/ordinal/CI/master)](https://github.com/dtolnay/ordinal/actions?query=branch%3Amaster)
 [![Latest Version](https://img.shields.io/crates/v/ordinal.svg)](https://crates.io/crates/ordinal)
 
 This crate provides a type `Ordinal<T>` that formats an [`Integer`] type `T` as
