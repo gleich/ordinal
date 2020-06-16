@@ -22,7 +22,7 @@
 //! }
 //! ```
 
-#![doc(html_root_url = "https://docs.rs/ordinal/0.2.2")]
+#![doc(html_root_url = "https://docs.rs/ordinal/0.2.3")]
 
 use std::fmt::{self, Display};
 
