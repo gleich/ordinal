@@ -23,6 +23,7 @@
 //! ```
 
 #![doc(html_root_url = "https://docs.rs/ordinal/0.2.3")]
+#![allow(clippy::unseparated_literal_suffix)]
 
 use std::fmt::{self, Display};
 
