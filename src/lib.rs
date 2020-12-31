@@ -38,11 +38,11 @@ where
 {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let s = self.0.to_string();
-        let suffix = if s.ends_with("1") && !s.ends_with("11") {
+        let suffix = if s.ends_with('1') && !s.ends_with("11") {
             "st"
-        } else if s.ends_with("2") && !s.ends_with("12") {
+        } else if s.ends_with('2') && !s.ends_with("12") {
             "nd"
-        } else if s.ends_with("3") && !s.ends_with("13") {
+        } else if s.ends_with('3') && !s.ends_with("13") {
             "rd"
         } else {
             "th"
