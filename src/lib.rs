@@ -30,7 +30,7 @@ where
     T: Integer + Display,
 {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{}{}", self.0.to_string(), self.suffix())
+        write!(f, "{}{}", self.0, self.suffix())
     }
 }
 
@@ -43,23 +43,19 @@ where
     /// # Examples
     ///
     /// ```
-    /// use ordinal::Ordinal;
-    ///
-    /// fn main() {
-    ///     assert_eq!("nd", Ordinal(2).suffix());
-    /// }
+    /// assert_eq!("nd", Ordinal(2).suffix());
+    /// ```
     pub fn suffix(&self) -> &str {
         let s = self.0.to_string();
-        let suffix = if s.ends_with('1') && !s.ends_with("11") {
+        if s.ends_with('1') && !s.ends_with("11") {
             "st"
-        } else if s.ends_with("2") && !s.ends_with("12") {
+        } else if s.ends_with('2') && !s.ends_with("12") {
             "nd"
-        } else if s.ends_with("3") && !s.ends_with("13") {
+        } else if s.ends_with('3') && !s.ends_with("13") {
             "rd"
         } else {
             "th"
-        };
-        suffix
+        }
     }
 }
 
