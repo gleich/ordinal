@@ -1,5 +1,8 @@
 # Ordinals (1st, 2nd, 3rd etc) for Rust
 
+[![test](https://github.com/gleich/ordinal/actions/workflows/test.yml/badge.svg)](https://github.com/gleich/ordinal/actions/workflows/test.yml)
+[![lint](https://github.com/gleich/ordinal/actions/workflows/lint.yml/badge.svg)](https://github.com/gleich/ordinal/actions/workflows/lint.yml)
+
 This crate provides a type `Ordinal<T>` that formats an [`Integer`](https://docs.rs/num-integer/0.1/num_integer/trait.Integer.html) type `T` as an [ordinal number](https://en.wikipedia.org/wiki/Ordinal_number_%28linguistics%29) (1st, 2nd, 3rd, etc).
 
 ## Install
