@@ -16,6 +16,7 @@
 
 #![doc(html_root_url = "https://docs.rs/ordinal/0.2.3")]
 #![allow(clippy::unseparated_literal_suffix)]
+#![allow(clippy::tabs_in_doc_comments)]
 
 use std::fmt::{self, Display};
 
@@ -43,6 +44,7 @@ where
 	/// # Examples
 	///
 	/// ```
+	/// use ordinal::Ordinal;
 	/// assert_eq!("nd", Ordinal(2).suffix());
 	/// assert_eq!("st", Ordinal(1).suffix());
 	/// ```
