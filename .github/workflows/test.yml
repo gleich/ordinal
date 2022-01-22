@@ -1,12 +1,11 @@
-name: CI
+name: test
 
 on:
-  push:
-  pull_request:
-  schedule: [cron: "40 1 * * *"]
+  - push
+  - pull_request
 
 jobs:
-  test:
+  cargo:
     name: Rust ${{matrix.rust}}
     runs-on: ubuntu-latest
     strategy:
@@ -19,11 +18,3 @@ jobs:
         with:
           toolchain: ${{matrix.rust}}
       - run: cargo test
-
-  clippy:
-    name: Clippy
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: dtolnay/rust-toolchain@clippy
-      - run: cargo clippy --tests -- -Dclippy::all -Dclippy::pedantic
