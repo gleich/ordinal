@@ -30,17 +30,36 @@ where
     T: Integer + Display,
 {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{}{}", self.0.to_string(), self.suffix())
+    }
+}
+
+impl<T> Ordinal<T>
+where
+    T: Integer + Display,
+{
+    /// Returns just the suffix for the ordinal
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use ordinal::Ordinal;
+    ///
+    /// fn main() {
+    ///     assert_eq!("nd", Ordinal(2).suffix());
+    /// }
+    pub fn suffix(&self) -> &str {
         let s = self.0.to_string();
         let suffix = if s.ends_with('1') && !s.ends_with("11") {
             "st"
-        } else if s.ends_with('2') && !s.ends_with("12") {
+        } else if s.ends_with("2") && !s.ends_with("12") {
             "nd"
-        } else if s.ends_with('3') && !s.ends_with("13") {
+        } else if s.ends_with("3") && !s.ends_with("13") {
             "rd"
         } else {
             "th"
         };
-        write!(f, "{}{}", s, suffix)
+        suffix
     }
 }
 
@@ -108,5 +127,47 @@ mod tests {
 
         assert_eq!("1st", Ordinal(BigInt::one()).to_string());
         assert_eq!("1st", Ordinal(BigUint::one()).to_string());
+    }
+
+    #[test]
+    fn test_suffix() {
+        for case in vec![
+            (-4, "th"),
+            (-3, "rd"),
+            (-2, "nd"),
+            (-1, "st"),
+            (0, "th"),
+            (1, "st"),
+            (2, "nd"),
+            (3, "rd"),
+            (4, "th"),
+            (10, "th"),
+            (11, "th"),
+            (12, "th"),
+            (13, "th"),
+            (14, "th"),
+            (20, "th"),
+            (21, "st"),
+            (22, "nd"),
+            (23, "rd"),
+            (24, "th"),
+            (100, "th"),
+            (101, "st"),
+            (102, "nd"),
+            (103, "rd"),
+            (104, "th"),
+            (110, "th"),
+            (111, "th"),
+            (112, "th"),
+            (113, "th"),
+            (114, "th"),
+            (120, "th"),
+            (121, "st"),
+            (122, "nd"),
+            (123, "rd"),
+            (124, "th"),
+        ] {
+            assert_eq!(case.1, Ordinal(case.0).suffix());
+        }
     }
 }
