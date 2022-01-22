@@ -44,6 +44,7 @@ where
 	///
 	/// ```
 	/// assert_eq!("nd", Ordinal(2).suffix());
+	/// assert_eq!("st", Ordinal(1).suffix());
 	/// ```
 	pub fn suffix(&self) -> &str {
 		let s = self.0.to_string();

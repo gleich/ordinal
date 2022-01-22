@@ -1,11 +1,10 @@
-Ordinals (1st, 2nd, 3rd etc) for Rust
-=====================================
+# Ordinals (1st, 2nd, 3rd etc) for Rust
 
-This crate provides a type `Ordinal<T>` that formats an [`Integer`] type `T` as
-an [ordinal number] (1st, 2nd, 3rd etc).
+This crate provides a type `Ordinal<T>` that formats an [`Integer`](https://docs.rs/num-integer/0.1/num_integer/trait.Integer.html) type `T` as an [ordinal number](https://en.wikipedia.org/wiki/Ordinal_number_%28linguistics%29) (1st, 2nd, 3rd, etc).
 
-[`Integer`]: https://docs.rs/num-integer/0.1/num_integer/trait.Integer.html
-[ordinal number]: https://en.wikipedia.org/wiki/Ordinal_number_%28linguistics%29
+## Install
+
+Just add the following line to your `Cargo.toml` file:
 
 ```toml
 [dependencies]
@@ -22,19 +21,6 @@ fn main() {
 }
 ```
 
-<br>
+## Ownership Context
 
-#### License
-
-<sup>
-Licensed under either of <a href="LICENSE-APACHE">Apache License, Version
-2.0</a> or <a href="LICENSE-MIT">MIT license</a> at your option.
-</sup>
-
-<br>
-
-<sub>
-Unless you explicitly state otherwise, any contribution intentionally submitted
-for inclusion in this crate by you, as defined in the Apache-2.0 license, shall
-be dual licensed as above, without any additional terms or conditions.
-</sub>
+I am not the original author of this crate. The original author, [@dtolnay](https://github.com/dtolnay), didn't want to maintain the crate anymore so he gave it to me. This means that I am the official maintainer of this package. If you want to see where this decision was made check the [GitHub issue](https://github.com/gleich/ordinal/issues/2).
