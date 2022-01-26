@@ -2,7 +2,7 @@
 name = "ordinal"
 version = "0.2.3" # remember to update html_root_url
 edition = "2021"
-license = "MIT OR Apache-2.0"
+license = "MPL-2.0"
 description = "Formatting of ordinals (1st, 2nd, 3rd etc)"
 documentation = "https://docs.rs/ordinal"
 readme = "README.md"
