@@ -56,16 +56,16 @@ where
 	/// assert_eq!("nd", Ordinal(2).suffix());
 	/// assert_eq!("st", Ordinal(1).suffix());
 	/// ```
-	pub fn suffix(&self) -> &str {
+	pub fn suffix(&self) -> String {
 		let s = self.0.to_string();
 		if s.ends_with('1') && !s.ends_with("11") {
-			"st"
+			String::from("st")
 		} else if s.ends_with('2') && !s.ends_with("12") {
-			"nd"
+			String::from("nd")
 		} else if s.ends_with('3') && !s.ends_with("13") {
-			"rd"
+			String::from("rd")
 		} else {
-			"th"
+			String::from("th")
 		}
 	}
 }
