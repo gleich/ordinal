@@ -9,7 +9,7 @@
 //!
 //! ```toml
 //! [dependencies]
-//! ordinal = "0.3"
+//! ordinal = "0.3.1"
 //! ```
 //!
 //! ## Example

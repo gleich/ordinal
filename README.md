@@ -11,7 +11,7 @@ Just add the following line to your `Cargo.toml` file:
 
 ```toml
 [dependencies]
-ordinal = "0.3"
+ordinal = "0.3.1"
 ```
 
 ## Example
