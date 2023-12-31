@@ -26,9 +26,9 @@
 #![allow(clippy::unseparated_literal_suffix)]
 #![allow(clippy::tabs_in_doc_comments)]
 
-use std::fmt::{self, Display};
-
 use num_integer::Integer;
+use std::fmt::{self, Display};
+use std::str::FromStr;
 
 /// Newtype wrapper struct that formats integers as an ordinal number.
 #[derive(Copy, Clone, Debug, Default, Eq, PartialEq, Ord, PartialOrd, Hash)]
@@ -45,7 +45,7 @@ where
 
 impl<T> Ordinal<T>
 where
-	T: Integer + Display,
+	T: Integer + ToString,
 {
 	/// Returns just the suffix for the ordinal
 	///
@@ -57,15 +57,31 @@ where
 	/// assert_eq!("st", Ordinal(1).suffix());
 	/// ```
 	pub fn suffix(&self) -> &'static str {
-		let s = self.0.to_string();
-		if s.ends_with('1') && !s.ends_with("11") {
-			"st"
-		} else if s.ends_with('2') && !s.ends_with("12") {
-			"nd"
-		} else if s.ends_with('3') && !s.ends_with("13") {
-			"rd"
+		// Get a string representation of the number
+		let str_repr = self.0.to_string();
+
+		// Get the last two characters of the string
+		let len = str_repr.len();
+		let last_two_chars = if len > 1 {
+			str_repr.get(len - 2..).unwrap_or(&str_repr)
 		} else {
-			"th"
+			&str_repr
+		};
+
+		// Convert the last two characters into an absolute i8; the value can only be between 0 and 99
+		let ordinal_num = i8::from_str(last_two_chars)
+			.map(i8::abs)
+			.unwrap_or_default();
+
+		// Return the ordinal suffix based on English ordinal rules
+		match ordinal_num % 100 {
+			11..=13 => "th",
+			_ => match ordinal_num % 10 {
+				1 => "st",
+				2 => "nd",
+				3 => "rd",
+				_ => "th",
+			},
 		}
 	}
 }
